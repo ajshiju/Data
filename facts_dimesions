@@ -1,0 +1,41 @@
+Fact vs Dimension Tables
+Understanding the difference between Fact and Dimension tables in the context of the Star Schema and Data Warehousing
+
+As organizations generate and consume an increasing volume of data, effective data management is becoming more challenging, particularly when it comes to data storage and modelling. Therefore, establishing a proper data structure is critical for managing data effectively.
+
+In this article, we will explore a widely-used principle in Data Engineering, known as the Star Schema, and delve into its two primary components: Fact and Dimension Tables. By discussing their differences and providing an end-to-end example, we aim to demonstrate how these concepts are utilized in real-world projects.
+
+The Star Schema in a nutshell
+The Star schema is widely used in the modelling of data warehouses and dimensional data marts. It is composed of a single fact table that references any number of dimension tables.
+
+This schema is a variant of the Snowflake schema and is typically used to enable simpler query sets, with both advantages and disadvantages. The name “star schema” originates from the fact table’s central position in the schema diagram, surrounded by dimension tables.
+
+Fact and Dimension Tables
+A Fact Table is one that holds the primary keys of the referenced dimension tables along with some quantitative metrics (i.e. measurements) over which some sort of calculation can be performed. Some common examples of facts tables include orders, logs and time-series financial data.
+
+On the other hand, Dimension Tables hold the descriptive information for all related fields that are included in the fact table’s records. A few common examples of Dimension Tables are physical entities such as a Customer and Product tables or even Time Tables. In general, the Dimension Tables are expected to be much smaller in size compared to Fact Tables.
+
+A straightforward approach to differentiating fact tables from dimension tables is to examine whether a table refers to a noun, such as a physical object or person. For instance, a product or a customer may exist independently of any specific business event. Dimension tables, therefore, represent nouns since they represent something that either takes action or has action taken upon it (such as a physical store, customer, or product). On the other hand, a verb usually corresponds to a Fact Table, where each record corresponds to an event in which entries from dimension tables are involved. For example, an order involves a customer and a product (or potentially more). The act of placing an order is made by a specific customer for a specific product.
+
+As an example, let’s consider a use-case where customers purchase products in physical stores. The star schema is illustrated below.
+
+
+Example Star Schema with a Fact table in orange and Dimension tables in blue — Source: Author
+Dimension tables — in blue colour — correspond to the tables containing information about the Customers, Stores, Products and Dates. These are the nouns of the business case.
+
+The Fact table shown in orange, contains all the Primary Keys (PK) of the dimension tables — which are the Foreign Keys (FK) in the fact table — along with two quantitative fields, namely quantity and amount.
+
+Note that a fact table could exist even without a Primary Key but usually they are assigned a Surrogate Key.
+
+Benefits of Star Schema
+Due to the denormalised nature of the model, Star Schema tends to be faster in terms of performance. At the same time the Star Schema tends to be fairly simple and thus the overall structure is easier to be designed. Additionally, it is much more readable even though not as maintainable — more on this in the next section.
+
+The structure of the star schema facilitates data aggregation, with a fact table typically joined to only one level of dimension tables. This simplicity reduces the complexity of queries for Data Engineers and Scientists, and may also simplify the testing process. Additionally, the efficient query performance of the Star Schema helps minimize the risk of adversely affecting other OLAP products.
+
+When (not) to use the Star Schema
+As previously mentioned, dimensions in the Star Schema are denormalized, potentially leading to repeating values within a table. Consequently, storage requirements for the Star Schema are relatively larger than those of other schemas, such as the normalized Snowflake Schema. If storage size is a concern, this data redundancy may warrant reconsideration of the Star Schema.
+
+Furthermore, the data redundancy in the Star Schema heightens the risk to data integrity, as new updates, deletions, and insertions may affect the overall data integrity due to data being repeated in multiple records.
+
+Although the Star Schema is simple to design and implement because of the straightforward relationships between tables, maintaining it may pose a challenge due to the aforementioned data integrity concerns. With new data ingested and potential creation of new tables, validating and preserving data integrity throughout the Data Warehouse may become difficult.
+
