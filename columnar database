@@ -1,0 +1,22 @@
+
+all columns are treated individually,
+
+Values of a single column are stored contiguously in a sorted order that is for processing performance.
+
+Rules may be constructed from column values later if required.
+
+This means column stores can still produce raw output, which is always the case.
+
+Values from multiple columns need to be retrieved and assembled for that, making implementation of
+
+a bit more complex, the way it becomes complex is that we need to have a pseudo layer that says that
+
+these particular values from these particular columns is one role for me generally.
+
+This job is done by the query processor in column oriented databases.
+
+The implementation is complex for the query engine, not from an end user who writes lexical queries
+
+or I read the rights data in a column in a database.
+
+Query processors in column, the database works on columns, too, so it is not always required that
