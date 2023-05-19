@@ -1,0 +1,19 @@
+The difference between the key values in the document stories here, it will have a type information
+
+maintained, not always it is enforced, but at least it is capable or it is mandatory for a document
+
+store to maintain that type of a particular information.
+
+So consider the case, as we saw earlier, that this is a unique identifier.
+
+These are map to what we call documents.
+
+These are documents.
+
+Documents consist of attributes which are fields.
+
+Attributes are named or time value pairs, which may be nested so there can be one nesting like this.
+
+Type information is Storper attribute, so every field would have a type associated with it.
+
+Documents, again, can be heterogeneous over here, what it means here is a document is heterogeneous,
