@@ -1,0 +1,16 @@
+
+These are map to values, these generally are unique values are treated as blobs because as they give
+
+an example that you can have large amount of files stored on a different story.
+
+So this value this can be a file of this can be anything.
+
+So generally, this are stored blobs.
+
+No type information is stored, which means that what is the data type of this value that is not generally
+
+preserved, sold or maintained?
+
+Values can be heterogeneous because there is no time constraint on the value that it should be an integer
+
+character or something, so it can be of any type.So that is the reason it can be heterogeneous.
